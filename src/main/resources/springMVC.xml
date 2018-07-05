@@ -23,4 +23,21 @@
         <property name="prefix" value="/"></property> <!-- 前缀 -->
         <property name="suffix" value=".jsp"></property><!-- 后缀 -->
     </bean>
+
+    <!--
+            @Value("#{configProperties['log']}")
+            private String log;
+    -->
+    <!-- 配置读取properties文件 -->
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <!--<value>classpath:path.properties</value>-->
+            </list>
+        </property>
+    </bean>
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties" />
+    </bean>
+
 </beans>

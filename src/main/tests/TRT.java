@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -49,9 +50,21 @@ public class TRT {
 
     @Test
     public void commons()throws Exception{
-        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        final Date parse = s.parse("2018-06-15 04:58:52");
-        System.out.println(parse);
+
+        Double dou = 3000.5353;
+        System.out.println(
+                dou = (double)Math.round(dou*100)/100);
+    }
+
+
+
+    @Test
+    public void commonss()throws Exception{
+
+       File file = new File("E:/abc.txt");
+        System.out.println(file.exists());
+        Thread.sleep(10000);
+        System.out.println(file.exists());
     }
 
 }
