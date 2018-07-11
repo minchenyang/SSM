@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.File;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -50,10 +51,7 @@ public class TRT {
 
     @Test
     public void commons()throws Exception{
-
-        Double dou = 3000.5353;
-        System.out.println(
-                dou = (double)Math.round(dou*100)/100);
+        System.out.println(Float.parseFloat("7"));
     }
 
 
@@ -61,9 +59,14 @@ public class TRT {
     @Test
     public void commonss()throws Exception{
 
-       File file = new File("E:/abc.txt");
-        System.out.println(file.exists());
-        Thread.sleep(10000);
+        String path1 = this.getClass().getClassLoader().getResource("").getPath(); //到根目录/target/classes/ 的路径
+        String path2 = this.getClass().getResource("").getPath();//xxx/.../target/classes/edu/bit/files/ 到当前文件的路径
+        String path3 = this.getClass().getResource("/").getPath();//xxx/.../target/classes/edu/bit/files/ 到当前文件的路径
+        String path4 = this.getClass().getResource("/log4j2.xml").getPath();//target/classes 路径就是 resources 路径
+        File file = new File(path3);
+        System.out.println(path1);
+        System.out.println(path2);
+        System.out.println(path3);
         System.out.println(file.exists());
     }
 

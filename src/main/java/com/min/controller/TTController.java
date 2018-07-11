@@ -31,6 +31,38 @@ public class TTController {
         return "123";
     }
 
+    /**
+     * 文件上传
+     * @param
+     * @param
+     * @return
+     */
+    @RequestMapping(value="/upload.do",method= RequestMethod.POST)
+    @ResponseBody
+    public Object upload(HttpServletRequest request,  @RequestParam("file1") MultipartFile file)throws Exception{
+        if(!file.isEmpty()) {
+
+            //上传文件路径
+            //String path = request.getServletContext().getRealPath("E:/");
+            String path = "E:/";
+            //上传文件名
+            String filename = file.getOriginalFilename();
+            File filepath = new File(path,filename);
+            System.out.println(filepath);
+            //判断路径是否存在，如果不存在就创建一个
+            if (!filepath.getParentFile().exists()) {
+                filepath.getParentFile().mkdirs();
+            }
+            //将上传文件保存到一个目标文件当中
+            file.transferTo(new File(path + File.separator + filename));
+            return "success";
+        } else {
+            return "error";
+        }
+
+    }
+
+
 
     /**
      * 多文件上传
